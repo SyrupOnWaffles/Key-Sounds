@@ -13,7 +13,7 @@ def on_press(key):
     except:
         # keys not found in the list
         pygame.mixer.Sound.play(random.choice(list(data.keylist.values())))
-
+# TODO Remove the sounds on key holding
 run = True
 while run:
     for event in pygame.event.get(): 
