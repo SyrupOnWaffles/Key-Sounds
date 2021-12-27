@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
+# Imports
 import pygame
 import data
 from pynput import keyboard
 import random
-pygame.init()
-print(data.asciiArt)
 def on_press(key):
     print(str(format(key)).replace("Key.", ''))
     try:
@@ -13,11 +12,13 @@ def on_press(key):
     except:
         # keys not found in the list
         pygame.mixer.Sound.play(random.choice(list(data.keylist.values())))
-# TODO Remove the sounds on key holding
-run = True
-while run:
-    for event in pygame.event.get(): 
-        if event.type == pygame.QUIT:  
-            run = False
-    with keyboard.Listener(on_press=on_press) as listener:listener.join()
-pygame.quit()
+def main():
+    pygame.init()
+    print(data.asciiArt)
+    run = True
+    while run:
+        with keyboard.Listener(on_press=on_press) as listener:listener.join()
+    print("goodbye!!!")
+    pygame.quit()
+if __name__ == '__main__':
+    main()
