@@ -1,26 +1,32 @@
 import pygame
+import colorama
+import json
 pygame.init()
-asciiArt = """
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                                                                 
-            <                NOk0OxxON                 >
-            <                XodkxxddK                 >
-            <             WXXOd0XKX0k0NNNWW            >
-            <          WXKOdkkdxkk0OkOkxxOOOX          >
-            <        WNKKX0OOOxddxkkxxdxOKXK0N         >
-            <        NKNNNNNNNNXXXXXKK0OX  WKxx0N      >
-            <      WXOK  WWWWNNNNNNNKXNKXN  W0kkk0N    >
-            <     WKxxX            WXXXOk0WWNK0OxON    >
-            <    NOk0KKKKKXXXNWWWW WKkkxOK00KkOOOW     >
-            <    WK0K00Ooloxkx0K0KKKKOO0kxxOXkxkK      >
-            <      XX0OOocoOKOk0OkkKOk0kxkdkOxx0N      >
-            <      NX0OX0oo0NXkxxOOKkONkxOk00XW        >
-            <       N00NN0OXWWNO0NWWOO0dkKNWW          >
-            <         WNN0lxXNXK0KXXOkx0W              >
-            <            XdOW  WNNNNNKOK               >
-            <            WNW         WNW               >
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"""
-switch = "Tecsee Carrots"
-                                                
+config = open("config.json")
+config = json.load(config)
+colours = {
+    # Colours may vary depending on terminal
+    "yellow": colorama.Fore.YELLOW,
+    "white": colorama.Fore.WHITE,
+    "red": colorama.Fore.RED,
+    "blue": colorama.Fore.BLUE,
+    "black": colorama.Fore.BLACK,
+    "cyan": colorama.Fore.CYAN,
+    "green": colorama.Fore.GREEN,
+    "magenta": colorama.Fore.MAGENTA,
+    "orange": colorama.Fore.LIGHTYELLOW_EX,
+    "light-blue": colorama.Fore.LIGHTBLUE_EX,
+    "light-green": colorama.Fore.LIGHTGREEN_EX,
+    "pink": colorama.Fore.LIGHTMAGENTA_EX,
+    "teal": colorama.Fore.LIGHTCYAN_EX,
+    "light-red": colorama.Fore.LIGHTRED_EX,    
+    "grey": colorama.Fore.LIGHTBLACK_EX,
+    "default": colorama.Fore.RESET,
+}
+asciiArt = config["art"]
+switch = config["switch"]
+theme = [colours[config["artTheme"]], colours[config["textTheme"]]]           
+
 keylist = {
     # Letters
     "A": pygame.mixer.Sound("sounds/" + switch + "/A.wav"),
